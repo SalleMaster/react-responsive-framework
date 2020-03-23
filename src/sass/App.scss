@@ -1,0 +1,9 @@
+// Custom css
+@import './variables/variables';
+@import './body/body';
+
+// Bootstrap
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+// Custom bootstrap
+@import './components/dropdown';
