@@ -1,13 +1,7 @@
-.dropdown-menu {
-  &.show {
-    display: flex;
-    flex-direction: column;
-    transform: scaleY(0);
-    transform-origin: top;
-
-    &.animate {
-      transform: scaleY(1);
-      transition: all 0.1s ease-in;
-    }
+.dropdown {
+  .dropdown-toggle {
+    background: none;
+    border: none;
+    outline: none;
   }
 }

@@ -10771,23 +10771,12 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
-.dropdown-menu.show {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-transform: scaleY(0);
-          transform: scaleY(0);
-  -webkit-transform-origin: top;
-          transform-origin: top;
+.dropdown .dropdown-toggle {
+  background: none;
+  border: none;
+  outline: none;
 }
 
-.dropdown-menu.show.animate {
-  -webkit-transform: scaleY(1);
-          transform: scaleY(1);
-  -webkit-transition: all 0.1s ease-in;
-  transition: all 0.1s ease-in;
+.collapse {
+  height: auto;
 }
