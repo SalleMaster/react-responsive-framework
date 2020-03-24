@@ -8,6 +8,7 @@ function App() {
   return (
     <div>
       <Navbar />
+      <section>Hello World</section>
     </div>
   );
 }

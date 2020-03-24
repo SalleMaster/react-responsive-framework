@@ -1,16 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const Navbar = () => {
-  const navRef = useRef(null);
-  const [navbarShow, setNavbarShow] = useState(false);
+  const navbarNav = useRef(null);
+  const [navClass, setNavClass] = useState('navbar-collapse collapse');
+  const [navCollapsing, setCollapsing] = useState(false);
+  const [navShow, setNavShow] = useState(false);
 
   const toggleNavbar = () => {
-    setNavbarShow(!navbarShow);
-    console.log(navRef.current.clientHeight);
+    setCollapsing(!navCollapsing);
+
+    setTimeout(() => {
+      setCollapsing(!navCollapsing);
+    }, 300);
   };
 
+  useEffect(() => {
+    if (navCollapsing) {
+      setNavClass('navbar-collapse collapsing');
+    }
+  }, [navCollapsing]);
+
   return (
-    <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+    <nav className='navbar fixed-top navbar-expand-lg navbar-light bg-light'>
       <div className='container'>
         <a href='/' className='navbar-brand'>
           LOGO
@@ -20,20 +31,35 @@ const Navbar = () => {
         </button>
 
         <div
-          className={
-            navbarShow
-              ? 'navbar-collapse collapse show'
-              : 'collapse navbar-collapse'
-          }
+          className={navClass}
           style={
-            navbarShow
-              ? { height: `${navRef.current.clientHeight}` }
+            navCollapsing
+              ? { height: `${navbarNav.current.clientHeight}px` }
               : { height: '' }
           }
-          ref={navRef}
         >
-          <ul className='navbar-nav ml-auto'>
+          <ul ref={navbarNav} className='navbar-nav ml-auto'>
             <li className='nav-item active'>
+              <a href='/' className='nav-link'>
+                Home
+              </a>
+            </li>
+            <li className='nav-item '>
+              <a href='/' className='nav-link'>
+                Home
+              </a>
+            </li>
+            <li className='nav-item '>
+              <a href='/' className='nav-link'>
+                Home
+              </a>
+            </li>
+            <li className='nav-item '>
+              <a href='/' className='nav-link'>
+                Home
+              </a>
+            </li>
+            <li className='nav-item '>
               <a href='/' className='nav-link'>
                 Home
               </a>
