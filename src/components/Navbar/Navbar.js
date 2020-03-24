@@ -7,18 +7,32 @@ const Navbar = () => {
   const [navShow, setNavShow] = useState(false);
 
   const toggleNavbar = () => {
-    setCollapsing(!navCollapsing);
-
-    setTimeout(() => {
-      setCollapsing(!navCollapsing);
-    }, 300);
+    setNavShow(!navShow);
   };
+
+  useEffect(() => {
+    if (navShow) {
+      setCollapsing(true);
+      setNavClass('navbar-collapse collapse show');
+    } else if (!navShow) {
+      setCollapsing(true);
+      setNavClass('navbar-collapse collapse');
+    }
+  }, [navShow]);
 
   useEffect(() => {
     if (navCollapsing) {
       setNavClass('navbar-collapse collapsing');
+      setTimeout(() => {
+        setCollapsing(false);
+        if (navShow) {
+          setNavClass('navbar-collapse collapse show');
+        } else if (!navShow) {
+          setNavClass('navbar-collapse collapse');
+        }
+      }, 300);
     }
-  }, [navCollapsing]);
+  }, [navCollapsing, navShow]);
 
   return (
     <nav className='navbar fixed-top navbar-expand-lg navbar-light bg-light'>
@@ -33,9 +47,13 @@ const Navbar = () => {
         <div
           className={navClass}
           style={
-            navCollapsing
-              ? { height: `${navbarNav.current.clientHeight}px` }
-              : { height: '' }
+            navShow && navCollapsing
+              ? {
+                  height: `${navbarNav.current.clientHeight}px`
+                }
+              : {
+                  height: ''
+                }
           }
         >
           <ul ref={navbarNav} className='navbar-nav ml-auto'>
